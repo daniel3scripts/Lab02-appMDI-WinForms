@@ -24,14 +24,59 @@ namespace Lab02_01
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            PrincipalMDI principal = new PrincipalMDI();
-            principal.Show();
-            this.Hide();
+            string user = txtUsuario.Text;
+            string passw = txtPassword.Text;
+           
+            List<Usuario> users = new List<Usuario>();
+            
+            users.Add(new Usuario { usuario="pepito@gmail.com",password="123abc"});
+            users.Add(new Usuario { usuario = "daniel1@gmail.com", password = "xyz789" });
+            users.Add(new Usuario { usuario = "daniel2@gmail.com", password = "xyz789" });
+            foreach (var x in users)
+            {
+                if (x.usuario == user && x.password == passw) 
+                {
+                    PrincipalMDI principal = new PrincipalMDI();
+                    principal.Show();
+                    this.Hide();
+
+                }
+
+                else
+                {
+                    MessageBox.Show("Error!!!Las credenciales son incorrectas");
+                    txtUsuario.Clear();
+                    txtPassword.Clear();
+                    
+                }
+                return;
+                
+            }
+
+            //if (user is Usuario(usuario) && passw is Usuario(password) )
+            //{
+                
+            //}
+            
+            
+
+            
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPassword_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 
